@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>683</width>
+    <height>384</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Lendo arquivo de interface XML QWidget</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../assets/icons/icon.png</normaloff>../../assets/icons/icon.png</iconset>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
