@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-"""PySide2 statusBar."""
+"""PySide2 QStatusBar()."""
+import sys
+
 from PySide2.QtGui import QIcon, QPixmap
 from PySide2.QtWidgets import QApplication, QMainWindow
 
@@ -7,30 +9,36 @@ from PySide2.QtWidgets import QApplication, QMainWindow
 class MainWindow(QMainWindow):
 
     def __init__(self):
-        super().__init__()
-        # Resolução do monitor.
-        screen_size = app.primaryScreen().geometry()
-        width = screen_size.width()
-        height = screen_size.height()
-        # Tamanho inicial da janela.
-        self.resize(int(width / 2), int(height / 2))
-        # Tamanho mínimo da janela.
-        self.setMinimumSize(int(width / 3), int(height / 3))
+        super(MainWindow, self).__init__()
         # Título da janela.
-        self.setWindowTitle('PySide2 statusBar()')
+        self.setWindowTitle('PySide2 QStatusBar().')
+
         # Ícone da janela principal
         icon = QIcon()
-        icon.addPixmap(QPixmap('../../assets/icons/icon.png'))
+        icon.addPixmap(QPixmap('../../../images/icons/icon.png'))
         self.setWindowIcon(icon)
 
+        # Tamanho inicial da janela.
+        screen_size = app.desktop().geometry()
+        # screen_size = app.primaryScreen().geometry()
+        width = screen_size.width()
+        height = screen_size.height()
+        self.resize(width / 2, height / 2)
+
+        # Tamanho mínimo da janela.
+        self.setMinimumSize(width / 2, height / 2)
+
+        # Tamanho maximo da janela.
+        self.setMaximumSize(width - 200, height - 200)
+
         # Statusbar fica localizado na parte inferior da janela.
-        self.statusBar().showMessage('Olá Mundo', 5000)
+        statusbar = self.statusBar()
+        statusbar.setStyleSheet('color: red')
+        statusbar.showMessage('Texto que será exibido na barra de estatus.', 5000)
 
 
 if __name__ == "__main__":
-    import sys
-
     app = QApplication(sys.argv)
-    mainwindow = MainWindow()
-    mainwindow.show()
+    window = MainWindow()
+    window.show()
     sys.exit(app.exec_())

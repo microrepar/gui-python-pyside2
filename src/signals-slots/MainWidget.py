@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""QWidget e connect.
+"""PySide2 QWidget e connect().
 
 Criando uma aplicativo do tipo QWidget com Python e utilizando o
 `connect()` para executar um callback.
@@ -13,15 +13,26 @@ class MainWidget(QWidget):
 
     def __init__(self):
         super().__init__()
-        screen_size = app.primaryScreen().geometry()
+        # Título da janela.
+        self.setWindowTitle('PySide2 QWidget e connect().')
+
+        # Ícone da janela principal
+        icon = QIcon()
+        icon.addPixmap(QPixmap('../../images/icons/icon.png'))
+        self.setWindowIcon(icon)
+
+        # Tamanho inicial da janela.
+        screen_size = app.desktop().geometry()
+        # screen_size = app.primaryScreen().geometry()
         width = screen_size.width()
         height = screen_size.height()
-        self.resize(int(width / 2), int(height / 2))
-        self.setMinimumSize(int(width / 3), int(height / 3))
-        self.setWindowTitle('QWidget e connect')
-        icon = QIcon()
-        icon.addPixmap(QPixmap('../assets/icons/icon.png'))
-        self.setWindowIcon(icon)
+        self.resize(width / 2, height / 2)
+
+        # Tamanho mínimo da janela.
+        self.setMinimumSize(width / 2, height / 2)
+
+        # Tamanho maximo da janela.
+        self.setMaximumSize(width - 200, height - 200)
 
         vbox = QVBoxLayout()
         self.setLayout(vbox)

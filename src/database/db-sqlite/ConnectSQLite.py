@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Exemplo de CRUD com SQLite3."""
+"""Exemplo de CRUD com SQLite3.
+
+python3-mysqldb libmysqlclient-dev python-dev
+"""
 from PySide2.QtSql import QSqlDatabase, QSqlQuery
 
 
@@ -12,16 +15,23 @@ class ConnectSQLite:
 
         self.query = QSqlQuery()
 
+        # Removendo a tabela.
+        self.drop_table(table='table_name')
+
         # Criando a tabela.
         self.create_table()
 
     def create_table(self):
         sql = '''CREATE TABLE IF NOT EXISTS table_name (
-        id INTEGER PRIMARY KEY,
-        name TEXT,
-        age INTEGER,
-        gender TEXT
-        )'''
+        id      INTEGER PRIMARY KEY,
+        name    TEXT,
+        age     INTEGER,
+        gender  TEXT
+        );'''
+        self.query.exec_(sql)
+
+    def drop_table(self, table):
+        sql = f'DROP TABLE IF EXISTS {table};'
         self.query.exec_(sql)
 
     def insert_row(self, data):
@@ -41,7 +51,8 @@ class ConnectSQLite:
         self.query.addBindValue(rowid)
         self.query.exec_()
         if self.query.first():
-            return self.query.value(0), self.query.value(1), self.query.value(2), self.query.value(3)
+            return (self.query.value(0), self.query.value(1),
+                    self.query.value(2), self.query.value(3))
         return False
 
     def find(self, limit=10):
@@ -88,37 +99,37 @@ class ConnectSQLite:
 if __name__ == '__main__':
     print('Drivers disponíveis:', QSqlDatabase.drivers())
 
-    # user = ('Felipe', 35, 'Masculino')
-    # users = [
-    #     ('Maria', 20, 'Feminino'),
-    #     ('João', 50, 'Masculino'),
-    # ]
+    user = ('Felipe', 35, 'Masculino')
+    users = [
+        ('Maria', 20, 'Feminino'),
+        ('João', 50, 'Masculino'),
+    ]
 
-    # database = ConnectSQLite()
+    database = ConnectSQLite()
 
     # Inserindo os dados.
-    # database.insert_row(data=user)
-    # database.insert_rows(data=users)
+    database.insert_row(data=user)
+    database.insert_rows(data=users)
 
     # Consultando com filtro.
-    # print(database.find_by_id(rowid=1))
+    print(database.find_by_id(rowid=1))
 
     # Consultando todos (limit=10).
-    # print(database.find())
+    print(database.find())
 
     # Alterando registro da tabela.
-    # print('ANTES da alteração:')
-    # print(database.find_by_id(rowid=2))
-    # database.update_row(rowid=2, name='Rafaela', age=50, gender='Feminino')
-    # print('DEPOIS da alteração:')
-    # print(database.find_by_id(rowid=2))
+    print('ANTES da alteração:')
+    print(database.find_by_id(rowid=2))
+    database.update_row(rowid=2, name='Rafaela', age=50, gender='Feminino')
+    print('DEPOIS da alteração:')
+    print(database.find_by_id(rowid=2))
 
     # Removendo registro da tabela.
-    # print('ANTES da remoção:')
-    # print(database.find())
-    # database.remove_row(rowid=2)
-    # print('DEPOIS da remoção:')
-    # print(database.find())
+    print('ANTES da remoção:')
+    print(database.find())
+    database.remove_row(rowid=2)
+    print('DEPOIS da remoção:')
+    print(database.find())
 
     # Fechando conexão com o banco.
-    # database.db.close()
+    database.db.close()

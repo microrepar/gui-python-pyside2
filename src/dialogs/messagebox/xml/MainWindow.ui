@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>683</width>
+    <height>384</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>683</width>
+    <height>384</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>683</width>
+    <height>384</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>PySide2 QMessageBox().</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../images/icons/icon.png</normaloff>../../../../images/icons/icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Clique no botão para abrir a caixa de diálogo</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_dialog">
+      <property name="text">
+       <string>Abrir diálogo do tipo caixa de mensagem</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_dialog_about">
+      <property name="text">
+       <string>Abrir diálogo do tipo sobre (about)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_dialog_aboutqt">
+      <property name="text">
+       <string>Abrir diálogo do tipo sobre (aboutqt)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_dialog_critical">
+      <property name="text">
+       <string>Abrir diálogo do tipo crítico (critical)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_dialog_information">
+      <property name="text">
+       <string>Abrir diálogo do tipo informação (information)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_dialog_question">
+      <property name="text">
+       <string>Abrir diálogo do tipo questão (question)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_dialog_warning">
+      <property name="text">
+       <string>Abrir diálogo do tipo alerta (warning)</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>683</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

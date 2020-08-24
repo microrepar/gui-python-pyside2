@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-"""PySide2 menuBar()."""
+"""PySide2 QMenuBar()."""
+import sys
+
 from PySide2.QtGui import QIcon, QPixmap
 from PySide2.QtWidgets import QApplication, QMainWindow, QMessageBox
 
@@ -7,21 +9,27 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QMessageBox
 class MainWindow(QMainWindow):
 
     def __init__(self):
-        super().__init__()
-        # Resolução do monitor.
-        screen_size = app.primaryScreen().geometry()
-        width = screen_size.width()
-        height = screen_size.height()
-        # Tamanho inicial da janela.
-        self.resize(int(width / 2), int(height / 2))
-        # Tamanho mínimo da janela.
-        self.setMinimumSize(int(width / 3), int(height / 3))
+        super(MainWindow, self).__init__()
         # Título da janela.
-        self.setWindowTitle('PySide2 menuBar()')
+        self.setWindowTitle('PySide2 QMenuBar().')
+
         # Ícone da janela principal
         icon = QIcon()
-        icon.addPixmap(QPixmap('../../assets/icons/icon.png'))
+        icon.addPixmap(QPixmap('../../../images/icons/icon.png'))
         self.setWindowIcon(icon)
+
+        # Tamanho inicial da janela.
+        screen_size = app.desktop().geometry()
+        # screen_size = app.primaryScreen().geometry()
+        width = screen_size.width()
+        height = screen_size.height()
+        self.resize(width / 2, height / 2)
+
+        # Tamanho mínimo da janela.
+        self.setMinimumSize(width / 2, height / 2)
+
+        # Tamanho maximo da janela.
+        self.setMaximumSize(width - 200, height - 200)
 
         # Menubar fica lozalizado na parte superior da janela.
         menu_bar = self.menuBar()
@@ -29,7 +37,7 @@ class MainWindow(QMainWindow):
         menu_file = menu_bar.addMenu('Arquivo')
         menu_file.addAction('Sair 1', self.close_app)
 
-        icon_exit = QIcon('../../assets/icons/exit-64x64.png')
+        icon_exit = QIcon('../../../images/icons/exit-64x64.png')
         menu_file.addAction(icon_exit, 'Sair 2', self.close_app)
 
         menu_about = menu_bar.addMenu('Sobre')
@@ -40,9 +48,9 @@ class MainWindow(QMainWindow):
 
     def about(self):
         icon = QIcon()
-        icon.addPixmap(QPixmap('../../assets/icons/icon.png'))
+        icon.addPixmap(QPixmap('../../../images/icons/icon.png'))
 
-        message_box = QMessageBox()
+        message_box = QMessageBox(parent=self)
         message_box.setWindowTitle('Título da caixa de texto')
         message_box.setWindowIcon(icon)
         message_box.setText(
@@ -58,9 +66,7 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    import sys
-
     app = QApplication(sys.argv)
-    mainwindow = MainWindow()
-    mainwindow.show()
+    window = MainWindow()
+    window.show()
     sys.exit(app.exec_())

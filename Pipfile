@@ -6,11 +6,11 @@ verify_ssl = true
 [dev-packages]
 pylint = "*"
 autopep8 = "*"
-pyinstaller = "*"
-cx-freeze = "*"
 
 [packages]
 pyside2 = "*"
+cx-freeze = "*"
+pyinstaller = "*"
 
 [requires]
 python_version = "3.8"

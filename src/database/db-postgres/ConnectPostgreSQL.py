@@ -1,12 +1,27 @@
 # -*- coding: utf-8 -*-
-"""Exemplo de CRUD com PostgreSQL."""
+"""Exemplo de CRUD com PostgreSQL.
+
+Dependências:
+
+Ubuntu:
+
+.. code-block::
+
+    sudo apt install libpq-dev
+
+Fedora:
+
+.. code-block::
+
+    sudo dnf install libpq-devel
+"""
 from PySide2.QtSql import QSqlDatabase, QSqlQuery
 
 
 class ConnectPostgreSQL:
     def __init__(self):
         self.db = QSqlDatabase.addDatabase('QPSQL')
-        self.db.setHostName('186.217.53.157')
+        self.db.setHostName('localhost')
         self.db.setPort(5432)
         self.db.setDatabaseName('database_name')
         self.db.setUserName('dbuser')
@@ -15,6 +30,9 @@ class ConnectPostgreSQL:
         self.db.open()
 
         self.query = QSqlQuery()
+
+        # Removendo a tabela.
+        self.drop_table(table='table_name')
 
         # Criando a tabela.
         self.create_table()
@@ -26,7 +44,11 @@ class ConnectPostgreSQL:
         age       INTEGER       NOT NULL,
         gender    VARCHAR(10)   NOT NULL,
         PRIMARY KEY(id)
-        )'''
+        );'''
+        self.query.exec_(sql)
+
+    def drop_table(self, table):
+        sql = f'DROP TABLE IF EXISTS {table};'
         self.query.exec_(sql)
 
     def insert_row(self, data):
@@ -107,37 +129,37 @@ class ConnectPostgreSQL:
 if __name__ == '__main__':
     print('Drivers disponíveis:', QSqlDatabase.drivers())
 
-    # user = ('Felipe', 35, 'Masculino')
-    # users = [
-    #     ('Maria', 20, 'Feminino'),
-    #     ('João', 50, 'Masculino'),
-    # ]
-    #
-    # database = ConnectPostgreSQL()
+    user = ('Felipe', 35, 'Masculino')
+    users = [
+        ('Maria', 20, 'Feminino'),
+        ('João', 50, 'Masculino'),
+    ]
+
+    database = ConnectPostgreSQL()
 
     # Inserindo os dados.
-    # database.insert_row(data=user)
-    # database.insert_rows(data=users)
+    database.insert_row(data=user)
+    database.insert_rows(data=users)
 
     # Consultando com filtro.
-    # print(database.find_by_id(rowid=1))
+    print(database.find_by_id(rowid=1))
 
     # Consultando todos (limit=10).
-    # print(database.find())
+    print(database.find())
 
     # Alterando registro da tabela.
-    # print('ANTES da alteração:')
-    # print(database.find_by_id(rowid=2))
-    # database.update_row(rowid=2, name='Rafaela', age=50, gender='Feminino')
-    # print('DEPOIS da alteração:')
-    # print(database.find_by_id(rowid=2))
+    print('ANTES da alteração:')
+    print(database.find_by_id(rowid=2))
+    database.update_row(rowid=2, name='Rafaela', age=50, gender='Feminino')
+    print('DEPOIS da alteração:')
+    print(database.find_by_id(rowid=2))
 
     # Removendo registro da tabela.
-    # print('ANTES da remoção:')
-    # print(database.find())
-    # database.remove_row(rowid=2)
-    # print('DEPOIS da remoção:')
-    # print(database.find())
+    print('ANTES da remoção:')
+    print(database.find())
+    database.remove_row(rowid=2)
+    print('DEPOIS da remoção:')
+    print(database.find())
 
     # Fechando conexão com o banco.
-    # database.db.close()
+    database.db.close()
