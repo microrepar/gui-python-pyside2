@@ -26,12 +26,13 @@ class MainWindow(QQuickView):
         if self.status() == QQuickView.Error:
             sys.exit(-1)
 
+        self.show()
+
 
 if __name__ == '__main__':
     import sys
 
     app = QGuiApplication(sys.argv)
-    app.setWindowIcon(QIcon('../../assets/icons/icon.png'))
+    app.setWindowIcon(QIcon('../../../../images/icons/icon.png'))
     mainwindow = MainWindow()
-    mainwindow.show()
-    app.exec_()
+    sys.exit(app.exec_())

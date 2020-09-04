@@ -9,9 +9,9 @@ from cx_Freeze import Executable, setup
 base = None
 
 build_exe_options = {
-    'excludes': ['tkinter', 'wx', 'email', 'pydoc_data', 'curses'],
-    'include_files': ['icons', 'MainWindow.ui'],
-    'packages': ['pyside2'],
+    'excludes': ['tkinter'],
+    'include_files': ['icons', 'MainWidget.qml'],
+    'packages': ['PySide2'],
 }
 
 if system() == 'Windows':
@@ -26,14 +26,14 @@ if system() == 'Windows':
         # build_exe_options['include_files'] = include_files
 
 setup(
-    name='MyApp',
+    name='Exemplo',
     author='Renato Cruz (natorsc@gmail.com)',
     version='0.0.1',
     description='Criando executáveis com Cx_Freeze!',
     options={'build_exe': build_exe_options},
     executables=[
         Executable(
-            'MainWindow.py',
+            'MainWidget.py',
             base=base,
             icon='icons/icon.ico',
         ),
