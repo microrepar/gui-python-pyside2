@@ -10,7 +10,7 @@ base = None
 
 build_exe_options = {
     'excludes': ['tkinter'],
-    'include_files': ['icons', 'MainWidget.qml'],
+    'include_files': ['icons', 'MainWindow.qml'],
     'packages': ['PySide2'],
 }
 
@@ -33,7 +33,7 @@ setup(
     options={'build_exe': build_exe_options},
     executables=[
         Executable(
-            'MainWidget.py',
+            'MainWindow.py',
             base=base,
             icon='icons/icon.ico',
         ),

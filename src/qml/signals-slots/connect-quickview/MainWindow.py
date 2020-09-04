@@ -45,6 +45,6 @@ if __name__ == '__main__':
     import sys
 
     app = QGuiApplication(sys.argv)
-    app.setWindowIcon(QIcon('../../assets/icons/icon.png'))
+    app.setWindowIcon(QIcon('../../../../images/icons/icon.png'))
     mainwindow = MainWindow()
-    app.exec_()
+    sys.exit(app.exec_())

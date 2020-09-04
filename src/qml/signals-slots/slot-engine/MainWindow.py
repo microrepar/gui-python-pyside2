@@ -10,10 +10,11 @@ from PySide2.QtQml import QQmlApplicationEngine
 
 
 class MainWindow(QObject):
-    def __init__(self):
+    def __init__(self, ui):
         super().__init__()
-        self.labe1 = window.findChild(QObject, 'label')
-        self.text_field = window.findChild(QObject, 'text_field')
+        self.ui = ui
+        self.labe1 = self.ui.findChild(QObject, 'label')
+        self.text_field = self.ui.findChild(QObject, 'text_field')
 
     @Slot(str)
     def on_button_clicked(self, text):
@@ -30,7 +31,7 @@ if __name__ == "__main__":
     import sys
 
     app = QGuiApplication(sys.argv)
-    app.setWindowIcon(QIcon('../../assets/icons/icon.png'))
+    app.setWindowIcon(QIcon('../../../../images/icons/icon.png'))
 
     engine = QQmlApplicationEngine()
     engine.load('./MainWindow.qml')
@@ -38,8 +39,8 @@ if __name__ == "__main__":
     if not engine.rootObjects():
         sys.exit(-1)
 
-    window = engine.rootObjects()[0]
-    mainwindow = MainWindow()
+    ui = engine.rootObjects()[0]
+    mainwindow = MainWindow(ui=ui)
 
     # Expondo o Python para o QML.
     context = engine.rootContext()

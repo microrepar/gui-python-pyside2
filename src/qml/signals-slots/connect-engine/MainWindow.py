@@ -39,8 +39,8 @@ class MainWindow(QQmlApplicationEngine):
         if not self.rootObjects():
             sys.exit(-1)
 
-        # Variável `window` **DEVE** utilizar `self`!
-        # Variável window recebe a janela principal e os widgets.
+        # Variável `ui` **DEVE** utilizar `self`!
+        # Variável `ui` recebe a janela principal e os widgets.
         self.ui = self.rootObjects()[0]
 
         # Acessado/atribuindo os widgets.

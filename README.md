@@ -142,11 +142,25 @@ Exemplos de CRUD (Create, Read, Update, Delete) com `QSqlDatabase`:
 ### Gerando executáveis
 
 - [Cx_Freeze](./src/gen-exec/_cx_freeze).
-- [Cx_Freeze Python](./src/gen-exec/_pyinstaller).
+- [PyInstaller](./src/gen-exec/_pyinstaller).
 
 ## QML
 
-ToDo
+### Janela principal.
+
+- [Lendo arquivo QML engine](./src/qml/mainwindow/engine).
+- [Lendo arquivo QML qquickview](./src/qml/mainwindow/qquickview).
+
+### Signal, Slots e Connect
+
+- [Connect com engine](./src/qml/signals-slots/connect-engine).
+- [Connect com quickview](./src/qml/signals-slots/connect-quickview).
+- [Slot com engine](./src/qml/signals-slots/slot-engine).
+
+### Gerando executáveis
+
+- [Cx_Freeze](./src/qml/gen-exec/_cx_freeze).
+- [PyInstaller](./src/qml/gen-exec/_pyinstaller).
 
 ## Kirigami2
 
