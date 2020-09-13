@@ -94,6 +94,14 @@ Dentre os principais bindings de terceiros exite o suporte as seguintes linguage
 
 ![PySide2 menu do tipo QToolBar](./images/widgets/qtoolbar.png)
 
+### Drag and drop
+
+- [Utilizando um widget do tipo label (XML)](./src/drag-and-drop/label).
+- [Utilizando um widget do tipo label Python](./src/drag-and-drop/label).
+
+- [Utilizando um widget do tipo QListWidget (XML)](./src/drag-and-drop/list_widget).
+- [Utilizando um widget do tipo QListWidget Python](./src/drag-and-drop/list_widget).
+
 ### Diálogos
 
 - [QColorDialog (XML)](./src/dialogs/color/xml).
